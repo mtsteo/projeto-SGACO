@@ -1,3 +1,4 @@
+import {useNavigate} from 'react-router-dom'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Stack, TextField, Card, Typography, Unstable_Grid2 as Grid } from '@mui/material';
@@ -5,6 +6,7 @@ import { Box, Button, Stack, TextField, Card, Typography, Unstable_Grid2 as Grid
 
 
 export const LoginPage = () => {
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -22,6 +24,10 @@ export const LoginPage = () => {
         .max(255)
         .required('É necessário uma senha!')
     }),
+    onSubmit :( )=>{
+      navigate('/home')
+    }
+
 
   });
 
@@ -164,7 +170,7 @@ export const LoginPage = () => {
               }}
               variant="h1"
             >
-              Bem vindo ao{' '}
+              Bem Vindo ao{' '}
               <Box
                 component="a"
                 sx={{ color: '#15B79E' }}
@@ -176,7 +182,8 @@ export const LoginPage = () => {
             <Typography
               align="center"
               sx={{ mb: 3 }}
-              variant="subtitle1"
+              variant="h6"
+              
             >
               Sistema de Gerenciamento e Agendamento de Consultas Online
             </Typography>

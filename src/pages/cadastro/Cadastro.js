@@ -3,7 +3,7 @@ import React from 'react'
 export default function Cadastro() {
   return (
     <div>
-      Cadastro
+      <h1>Cadastro</h1>
     </div>
   )
 }
