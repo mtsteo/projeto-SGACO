@@ -4,17 +4,29 @@ import {TotalConsultas} from  './sections/TotalConsultas.js'
 import { ConsultasPendentes } from './sections/ConsultasPendentes.js';
 import { ConsultasCanceladas } from './sections/ConsultasCanceladas.js';
 import { ConsultasRealizadas } from './sections/ConsutasRealizadas.js'
-const now = new Date();
+import { GraficoConsultas } from './sections/GraficoConsultas.js';
+
+const now = new Date().toUTCString().slice();
 
 const Home = () => (
   <>
+  <Typography 
+        variant='h4'
+        sx={{py:2,
+          marginLeft:2
+        }}
+        >
+          Visão Geral
+        </Typography>
     <Box
       component="main"
       sx={{
         flexGrow: 1,
-        py: 8
+        py: 2
       }}
     >
+      
+      
       <Container maxWidth="xl">
         <Grid
           container
@@ -52,9 +64,7 @@ const Home = () => (
             xs={12}
             lg={8}
           >
-            <Typography>
-              Grafico Barras
-            </Typography>
+            <GraficoConsultas/>
           </Grid>
           <Grid
             xs={12}
