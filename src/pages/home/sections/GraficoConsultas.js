@@ -1,12 +1,12 @@
 import Chart from "react-apexcharts";
-import { Card, CardContent, CardHeader, Divider } from "@mui/material";
+import { Card, CardContent, CardHeader, Divider, Typography } from "@mui/material";
 
 export const GraficoConsultas = () => {
   const series = [
     {
       name: "Quantidade de consultas",
       //Dados que virão do backend
-      data: ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"],
+      data: ["10", "20", "30", "40", "50", "40", "30", "20", "10", "5","25",'35'],
     },
   ];
   const options = {
@@ -62,7 +62,7 @@ export const GraficoConsultas = () => {
       labels: {
         offsetY: 4,
         style: {
-          colors: 'blue',
+          colors: "blue",
         },
       },
     },
@@ -71,7 +71,7 @@ export const GraficoConsultas = () => {
         formatter: (value) => (value > 0 ? value : `${value}`),
         offsetX: -10,
         style: {
-          colors: 'blue',
+          colors: "blue",
         },
       },
     },
@@ -79,7 +79,13 @@ export const GraficoConsultas = () => {
 
   return (
     <Card sx={{ height: "100%" }}>
-      <CardHeader title="Atendimentos mensais" />
+      <Typography
+        color="text.secondary"
+        variant="overline"
+        sx={{ margin: "5%" }}
+      >
+        Atendimentos mensais
+      </Typography>
       <CardContent>
         <Chart
           height={350}

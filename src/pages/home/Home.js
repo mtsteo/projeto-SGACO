@@ -5,8 +5,7 @@ import { ConsultasPendentes } from './sections/ConsultasPendentes.js';
 import { ConsultasCanceladas } from './sections/ConsultasCanceladas.js';
 import { ConsultasRealizadas } from './sections/ConsutasRealizadas.js'
 import { GraficoConsultas } from './sections/GraficoConsultas.js';
-
-const now = new Date().toUTCString().slice();
+import { GraficoEspecialidades } from './sections/GraficoEspecialidades.js'
 
 const Home = () => (
   <>
@@ -71,9 +70,7 @@ const Home = () => (
             md={6}
             lg={4}
           >
-            <Typography>
-              Gráfico Pizza
-            </Typography>
+           <GraficoEspecialidades/>
           </Grid>
         </Grid>
       </Container>
