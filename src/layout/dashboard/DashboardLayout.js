@@ -14,7 +14,7 @@ export default function DashboardLayout() {
     return (
         <div style={{ display: "flex" }}>
 
-            <Sidebar style={{ height: '100vh' }}
+            <Sidebar style={{ height: '100vh', position:'fixed' }}
                 rootStyles={{
                     [`.ps-sidebar-container`]: {
                         background: 'radial-gradient(50% 50% at 50% 50%, #122647 0%, #090E23 100%)',
@@ -33,7 +33,7 @@ export default function DashboardLayout() {
                     <MenuItem component={<Link to={'/relatorios'}></Link>}>Relatórios</MenuItem>
                 </Menu>
             </Sidebar>
-            <Box>
+            <Box sx={{marginLeft:'250px'}}>
                 <Outlet />
             </Box>
         </div>

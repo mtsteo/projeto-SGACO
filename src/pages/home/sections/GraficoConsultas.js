@@ -79,7 +79,7 @@ export const GraficoConsultas = () => {
 
   return (
     <Card sx={{ height: "100%" }}>
-      <CardHeader title="Sales" />
+      <CardHeader title="Atendimentos mensais" />
       <CardContent>
         <Chart
           height={350}
