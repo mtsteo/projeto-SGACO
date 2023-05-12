@@ -1,118 +1,95 @@
-
-import ArrowPathIcon from '@heroicons/react/24/solid/ArrowPathIcon';
-import ArrowRightIcon from '@heroicons/react/24/solid/ArrowRightIcon';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Divider,
-  SvgIcon
-} from '@mui/material';
-
-
-
-
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
-
-
+import Chart from "react-apexcharts";
+import { Card, CardContent, CardHeader, Divider } from "@mui/material";
 
 export const GraficoConsultas = () => {
- 
+  const series = [
+    {
+      name: "Quantidade de consultas",
+      //Dados que virão do backend
+      data: ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"],
+    },
+  ];
+  const options = {
+    chart: {
+      background: "transparent",
+      stacked: false,
+      toolbar: {
+        show: false,
+      },
+    },
+    fill: {
+      opacity: 1,
+      type: "solid",
+    },
+    grid: {
+      strokeDashArray: 2,
+      xaxis: {
+        lines: {
+          show: false,
+        },
+      },
+      yaxis: {
+        lines: {
+          show: true,
+        },
+      },
+    },
+    plotOptions: {
+      bar: {
+        columnWidth: "20px",
+      },
+    },
+    stroke: {
+      colors: ["transparent"],
+      show: false,
+      width: 2,
+    },
+    xaxis: {
+      categories: [
+        "Jan",
+        "Fev",
+        "Mar",
+        "Abr",
+        "Mai",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Set",
+        "Out",
+        "Nov",
+        "Dez",
+      ],
+      labels: {
+        offsetY: 4,
+        style: {
+          colors: 'blue',
+        },
+      },
+    },
+    yaxis: {
+      labels: {
+        formatter: (value) => (value > 0 ? value : `${value}`),
+        offsetX: -10,
+        style: {
+          colors: 'blue',
+        },
+      },
+    },
+  };
 
   return (
-    <Card sx={{height:'100%'}}>
-      <CardHeader
-        action={(
-          <Button
-            color="inherit"
-            size="small"
-            startIcon={(
-              <SvgIcon fontSize="small">
-                <ArrowPathIcon />
-              </SvgIcon>
-            )}
-          >
-            Sync
-          </Button>
-        )}
-        title="Sales"
-      />
+    <Card sx={{ height: "100%" }}>
+      <CardHeader title="Sales" />
       <CardContent>
-        <BarChart
-          data={data}  
-          width={500}
-          height={150}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
-        </BarChart>
+        <Chart
+          height={350}
+          options={options}
+          series={series}
+          type="bar"
+          width="100%"
+        />
       </CardContent>
       <Divider />
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <Button
-          color="inherit"
-          endIcon={(
-            <SvgIcon fontSize="small">
-              <ArrowRightIcon />
-            </SvgIcon>
-          )}
-          size="small"
-        >
-          Overview
-        </Button>
-      </CardActions>
     </Card>
   );
 };
