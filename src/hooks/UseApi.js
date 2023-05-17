@@ -12,11 +12,16 @@ export const UseApi = () => ({
         const response = await api.post('/validate', { token });
         return response.data;
     },
-    logar: async (username, password) => {
+    logar: async (email, senha) => {
         
-        const response = await api.post('/login', { username, password });
+        const response = await api.post('/login', { email, senha });
         return response.data;
     },
+    Cadastrar: async (dados) =>{
+        // const response = await api.post('/cadastrar',{dados});
+        
+    }
+    ,
     sair: async () => {
         return { status: false };
         const response = await api.post('/logout');

@@ -13,7 +13,7 @@ import {
   Typography,
   Unstable_Grid2 as Grid,
 } from "@mui/material";
-import CadastroSection from "./sections/CadastroSection";
+import { CadastroSection } from "./sections/CadastroSection";
 import { PacienteSection } from "./sections/PacientesSection";
 
 export default function Cadastro() {

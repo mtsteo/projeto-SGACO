@@ -1,4 +1,6 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthProvider";
+
 import {
   Box,
   Card,
@@ -8,33 +10,36 @@ import {
   CardHeader,
   Divider,
   TextField,
-  Container,
-  Stack,
   Typography,
   Unstable_Grid2 as Grid,
 } from "@mui/material";
 
-function CadastroSection() {
-    const [values, setValues] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        cpf: "",
-        Adress: "",
-        DataNasc: "",
-      });
-    
-      const handleChange = useCallback((event) => {
-        setValues((prevState) => ({
-          ...prevState,
-          [event.target.name]: event.target.value,
-        }));
-      }, []);
-    
-      const handleSubmit = useCallback((event) => {
-        event.preventDefault();
-      }, []);
+export const CadastroSection = () => {
+  const { cadastrar } = useContext(AuthContext);
+  const [values, setValues] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    cpf: "",
+    Adress: "",
+    DataNasc: "",
+  });
+
+  const handleChange = useCallback(
+    (event) => {
+      const { name, value } = event.target;
+      setValues((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    },
+    [values]
+  );
+
+  const handleSubmit = () => {
+   cadastrar(values);
+  };
 
   return (
     <>
@@ -90,7 +95,7 @@ function CadastroSection() {
                     name="Adress"
                     onChange={handleChange}
                     required
-                    value={values.country}
+                    value={values.Adress}
                   />
                 </Grid>
                 <Grid xs={12} md={6}>
@@ -127,6 +132,4 @@ function CadastroSection() {
       </form>
     </>
   );
-}
-
-export default CadastroSection;
+};

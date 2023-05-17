@@ -25,7 +25,7 @@ export const LoginPage = () => {
         .required('É necessário uma senha!')
     }),
     onSubmit :( )=>{
-      navigate('/home')
+      navigate('/inicio')
     }
 
 
