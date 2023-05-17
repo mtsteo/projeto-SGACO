@@ -1,7 +1,10 @@
 import { format } from "date-fns";
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import {
   Avatar,
   Box,
+  Button,
   Card,
   Checkbox,
   Stack,
@@ -32,11 +35,11 @@ export const PacienteSection = () => {
               <TableCell padding="checkbox">
                 <Checkbox />
               </TableCell>
-              <TableCell>Nome</TableCell>
-              <TableCell>CPF</TableCell>
-              <TableCell>Endereço</TableCell>
-              <TableCell>Telefone</TableCell>
-              <TableCell>Data de Nascimento</TableCell>
+              <TableCell sx={{fontWeight:700}}>NOME DO PACIENTE</TableCell>
+              <TableCell sx={{fontWeight:700}}>CPF</TableCell>
+              <TableCell sx={{fontWeight:700}}>DATA NASCIMENTO</TableCell>
+              <TableCell sx={{fontWeight:700}}>TELEFONE</TableCell>
+              <TableCell sx={{fontWeight:700}}>OPÇÕES<EditIcon/></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -56,11 +59,11 @@ export const PacienteSection = () => {
                     </Stack>
                   </TableCell>
                   <TableCell>{paciente.cpf}</TableCell>
-                  <TableCell>
-                    {paciente.endereco}
-                  </TableCell>
-                  <TableCell>{paciente.telefone}</TableCell>
                   <TableCell>{paciente.dataNasc}</TableCell>
+                  <TableCell>{paciente.telefone}</TableCell>
+                  <TableCell>
+                    <Button endIcon={<VisibilityIcon/>}> Ficha</Button>
+                    </TableCell>
                 </TableRow>
               );
             })}
