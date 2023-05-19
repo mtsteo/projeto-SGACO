@@ -29,14 +29,14 @@ const style = {
 export default function ModalFicha(props) {
     const [values, setValues] = useState({
         firstName: props.data.paciente.nome,
-        lastName: "",
-        email: "",
-        phone: "",
-        cpf: "",
-        Adress: "",
-        DataNasc: "",
+        lastName: props.data.paciente.sobrenome,
+        email: props.data.paciente.email,
+        phone: props.data.paciente.telefone,
+        cpf: props.data.paciente.cpf,
+        Adress: props.data.paciente.endereco,
+        DataNasc: props.data.paciente.dataNasc,
     });
-
+console.log(props.data.paciente.dataNasc)
     const handleChange = useCallback(
         (event) => {
             const { name, value } = event.target;
@@ -87,7 +87,7 @@ export default function ModalFicha(props) {
                                             md={6}
                                             lg={4}
                                         >
-                                            <Card sx={{ width: '15rem' }}>
+                                            <Card sx={{ width: '15rem', display:'flex', alignItems:'center', justifyContent:'center'}}>
                                                 <img src='https://cdn-icons-png.flaticon.com/256/4825/4825096.png' width={150}>
                                                 </img>
                                             </Card>
@@ -159,17 +159,6 @@ export default function ModalFicha(props) {
                                                                         onChange={handleChange}
                                                                         required
                                                                         value={values.cpf}
-                                                                    ></TextField>
-                                                                </Grid>
-                                                                <Grid xs={12} md={6}>
-                                                                    <Typography>Data de Nascimento</Typography>
-                                                                    <TextField
-                                                                        fullWidth
-                                                                        name="DataNasc"
-                                                                        onChange={handleChange}
-                                                                        type="Date"
-                                                                        required
-                                                                        value={values.DataNasc}
                                                                     ></TextField>
                                                                 </Grid>
                                                             </Grid>

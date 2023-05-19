@@ -26,9 +26,11 @@ export const PacienteSection = () => {
 
   const pacientes = [
     {
-      nome: "Mateus Eufrasio",
+      nome: "MATEUS",
+      sobrenome: "TEOTONHO EUFRASIO",
       cpf: "15804588745",
-      endereco: "Tv. Virglho Aguiar",
+      email:'mateusteotonho@gmail.com',
+      endereco: "TV. VIRGILHO AGUIAR",
       telefone: "91985478769",
       dataNasc: "03/02/1995",
     },
