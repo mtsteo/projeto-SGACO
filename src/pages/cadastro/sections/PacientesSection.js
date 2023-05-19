@@ -1,6 +1,8 @@
 import { format } from "date-fns";
-import EditIcon from '@mui/icons-material/Edit';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from "@mui/icons-material/Edit";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+
+import ModalFicha from "../../../components/ModalFicha";
 import {
   Avatar,
   Box,
@@ -16,15 +18,21 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 
 export const PacienteSection = () => {
-    const pacientes = [{
-      nome:'Mateus Eufrasio',
-      cpf:'15804588745',
-      endereco:'Tv. Virglho Aguiar',
-      telefone:'91985478769',
-      dataNasc:'03/02/1995'
-    }]
+  const [isOpen, setIsOpen] = useState(false)
+  const [isClose, setIsClose] = useState(false)
+
+  const pacientes = [
+    {
+      nome: "Mateus Eufrasio",
+      cpf: "15804588745",
+      endereco: "Tv. Virglho Aguiar",
+      telefone: "91985478769",
+      dataNasc: "03/02/1995",
+    },
+  ];
 
   return (
     <Card>
@@ -35,17 +43,18 @@ export const PacienteSection = () => {
               <TableCell padding="checkbox">
                 <Checkbox />
               </TableCell>
-              <TableCell sx={{fontWeight:700}}>NOME DO PACIENTE</TableCell>
-              <TableCell sx={{fontWeight:700}}>CPF</TableCell>
-              <TableCell sx={{fontWeight:700}}>DATA NASCIMENTO</TableCell>
-              <TableCell sx={{fontWeight:700}}>TELEFONE</TableCell>
-              <TableCell sx={{fontWeight:700}}>OPÇÕES<EditIcon/></TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>NOME DO PACIENTE</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>CPF</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>DATA NASCIMENTO</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>TELEFONE</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>
+                OPÇÕES
+                <EditIcon />
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {pacientes.map((paciente) => {
-              
-
               return (
                 <TableRow hover key="1">
                   <TableCell padding="checkbox">
@@ -62,8 +71,9 @@ export const PacienteSection = () => {
                   <TableCell>{paciente.dataNasc}</TableCell>
                   <TableCell>{paciente.telefone}</TableCell>
                   <TableCell>
-                    <Button endIcon={<VisibilityIcon/>}> Ficha</Button>
-                    </TableCell>
+                    <ModalFicha isOpen={isOpen} isClose={()=>setIsOpen(false)} data={{paciente}}/>
+                    <Button onClick={()=>setIsOpen(true)} endIcon={<VisibilityIcon />}> Ficha</Button>
+                  </TableCell>
                 </TableRow>
               );
             })}

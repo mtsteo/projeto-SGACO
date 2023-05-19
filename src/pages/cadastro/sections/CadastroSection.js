@@ -38,7 +38,7 @@ export const CadastroSection = () => {
   );
 
   const handleSubmit = () => {
-   cadastrar(values);
+    cadastrar(values);
   };
 
   return (
