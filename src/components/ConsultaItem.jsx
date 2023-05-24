@@ -17,13 +17,11 @@ import {
     Typography,
 } from "@mui/material";
 
-
-
-export default function PacienteItem(props) {
+export const ConsultaItem = (props) => {
     const [isOpen, setIsOpen] = useState(false)
 
-
-    return (
+    + ' ' + props.consultas.SobrenomePaciente
+    return(
         <TableRow hover key="1">
             <TableCell padding="checkbox">
                 <Checkbox />
@@ -31,20 +29,17 @@ export default function PacienteItem(props) {
             <TableCell>
                 <Stack alignItems="center" direction="row" spacing={2}>
                     <Typography variant="subtitle2">
-                        {props.paciente.nome}
+                        {props.consultas.nomePaciente + ' ' + props.consultas.SobrenomePaciente}
                     </Typography>
                 </Stack>
             </TableCell>
-            <TableCell>{props.paciente.cpf}</TableCell>
-            <TableCell>{props.paciente.dataNasc}</TableCell>
-            <TableCell>{props.paciente.dataNasc}</TableCell>
+            <TableCell>{props.consultas.NomeMedico}</TableCell>
+            <TableCell>{props.consultas.Turno}</TableCell>
+            <TableCell>{props.consultas.protocolo}</TableCell>
+            <TableCell>{props.consultas.Status}</TableCell>
+
 
             <TableCell>
-                <ModalFicha
-                    isOpen={isOpen}
-                    isClose={() => setIsOpen(false)}
-                    data={props}
-                />
                 <Button
                     onClick={() => setIsOpen(true)}
                     endIcon={<VisibilityIcon />}
@@ -54,7 +49,6 @@ export default function PacienteItem(props) {
                 </Button>
             </TableCell>
         </TableRow>
-
     )
 
 }
