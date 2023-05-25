@@ -40,7 +40,7 @@ export const ConsultasResult = () => {
           <TableBody>
             {DataConsulta.map((consulta) => {
               return (
-                <ConsultaItem consultas={consulta} />
+                <ConsultaItem key={consulta.id} consultas={consulta} />
               );
             })}
           </TableBody>

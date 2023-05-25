@@ -16,12 +16,14 @@ import {
     TableRow,
     Typography,
 } from "@mui/material";
+import { set } from "date-fns";
 
 export const ConsultaItem = (props) => {
     const [isOpen, setIsOpen] = useState(false)
 
-    + ' ' + props.consultas.SobrenomePaciente
-    return(
+
+
+    return (
         <TableRow hover key="1">
             <TableCell padding="checkbox">
                 <Checkbox />
@@ -36,7 +38,22 @@ export const ConsultaItem = (props) => {
             <TableCell>{props.consultas.NomeMedico}</TableCell>
             <TableCell>{props.consultas.Turno}</TableCell>
             <TableCell>{props.consultas.protocolo}</TableCell>
-            <TableCell>{props.consultas.Status}</TableCell>
+            <TableCell>
+                <Typography sx={{
+                    backgroundColor: props.consultas.Status == 1 ? 'green' :
+                        props.consultas.Status == 2 ? "orange" : "red"
+                    , color: 'white'
+                }}
+
+                >
+                    {
+                        props.consultas.Status == 1 ?
+                            "REALIZADO" : props.consultas.Status == 2 ?
+                                "PENDENTE" : "CANCELADO"
+                    }
+
+                </Typography>
+            </TableCell>
 
 
             <TableCell>

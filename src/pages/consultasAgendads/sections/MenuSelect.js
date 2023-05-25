@@ -6,6 +6,7 @@ import {
   Unstable_Grid2 as Grid,
   CardActions,
   Button,
+  TextField,
 } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -13,10 +14,18 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function MenuSelect() {
-  const [age, setAge] = React.useState("");
+  const [values, setvalues] = React.useState({
+    filtro: "",
+    busca: "",
+  });
+  console.log(values)
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    const { name, value } = event.target;
+    setvalues((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
@@ -27,50 +36,38 @@ export default function MenuSelect() {
           py: 2,
         }}
       >
-            <Grid container spacing={1}>
-              <Grid xs={12} sm={6} lg={3}>
-                <FormControl sx={{width: "100%" }} size="small">
-                  <InputLabel id="demo-select-small-label">
-                    Especialidade
-                  </InputLabel>
-                  <Select
-                    labelId="demo-select-small-label"
-                    id="demo-select-small"
-                    value={age}
-                    defaultValue={'hjsfhj'}
-                    label="Age"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid xs={12} sm={6} lg={3}>
-                <FormControl sx={{width: "100%" }} size="small">
-                  <InputLabel id="demo-select-small-label">Status</InputLabel>
-                  <Select
-                    labelId="demo-select-small-label"
-                    id="demo-select-small"
-                    value={age}
-                    label="Age"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-                <Button variant="contained" size="small">Buscar</Button>
-            </Grid>
+        <Grid container spacing={1}>
+          <Grid xs={12} sm={6} lg={3}>
+            <FormControl sx={{ width: "100%" }} size="small">
+              <InputLabel id="demo-select-small-label">Filtro</InputLabel>
+              <Select
+                name="filtro"
+                labelId="demo-select-small-label"
+                id="demo-select-small"
+                value={values.filtro}
+                label="Age"
+                onChange={handleChange}
+              >
+                <MenuItem value="0">Protocolo</MenuItem>
+                <MenuItem value="1">Especialização</MenuItem>
+                <MenuItem value="2">Dia</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid xs={12} sm={6} lg={3}>
+            <TextField
+              value={values.busca}
+              name="busca"
+              id="outlined-basic"
+              size="small"
+              variant="outlined"
+              onChange={handleChange}
+            />
+          </Grid>
+          <Button variant="contained" size="small">
+            Buscar
+          </Button>
+        </Grid>
       </Box>
     </>
   );
