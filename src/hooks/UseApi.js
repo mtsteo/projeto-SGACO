@@ -2,7 +2,7 @@ import axios from "axios";
 import { da } from "date-fns/locale";
 
 const api = axios.create({
-  baseURL: "https://c736-168-197-154-209.ngrok-free.app",
+  baseURL: "https://b896-168-197-154-209.ngrok-free.app",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -15,7 +15,7 @@ const api = axios.create({
 
 
 export const UseApi = () => ({
-  validarToken: async (token) => {
+  validarToken: async (token) => {  
     return {
       user: { id: 3, name: "administrador", email: "jose@gmail.com" },
     };
@@ -24,7 +24,6 @@ export const UseApi = () => ({
   },
   logar: async (email, senha) => {
     const response = await api.post("/login", {"email":email, "senha":senha});
-    
     return response.data;
   },
   Cadastrar: async (dados) => {

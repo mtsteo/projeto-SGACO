@@ -28,7 +28,11 @@ export const LoginPage = () => {
         .required('É necessário uma senha!')
     }),
     onSubmit :( )=>{
-      Entrar(formik.values.email, formik.values.password)
+     const auth =  Entrar(formik.values.email, formik.values.password)
+     if (auth){
+      navigate("/inicio")
+     }
+
     }
 
 

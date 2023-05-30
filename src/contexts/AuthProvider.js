@@ -19,11 +19,12 @@ export const AuthProvider = ({ children }) => {
     validateToken();
   }, [status]);
 
-  const Entrar = async (email,senha) => {
+  const Entrar = async (email, senha) => {
     const data = await api.logar(email, senha);
-    if (data.acessToken) {
-      // setUser(data.user);
-      setStatus(true)
+    // console.log(data.accessToken)
+    if (data.accessToken) {
+      setUser(data);
+      setStatus(true);
       setToken(data.accessToken);
       return true;
     }
@@ -47,7 +48,9 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("Token", token);
   };
   return (
-    <AuthContext.Provider value={{ user, Entrar, cadastrar, Sair, status }}>
+    <AuthContext.Provider
+      value={{ user, Entrar, cadastrar, Sair, status, user }}
+    >
       {children}
     </AuthContext.Provider>
   );
