@@ -1,11 +1,14 @@
 import {useNavigate} from 'react-router-dom'
 import { useFormik } from 'formik';
+import { AuthContext } from '../../contexts/AuthProvider';
 import * as Yup from 'yup';
 import { Box, Button, Stack, TextField, Card, Typography, Unstable_Grid2 as Grid } from '@mui/material';
+import { useContext } from 'react';
 
 
 
 export const LoginPage = () => {
+  const {Entrar} = useContext(AuthContext)
   const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
@@ -25,7 +28,7 @@ export const LoginPage = () => {
         .required('É necessário uma senha!')
     }),
     onSubmit :( )=>{
-      navigate('/inicio')
+      Entrar(formik.values.email, formik.values.password)
     }
 
 

@@ -12,29 +12,26 @@ export const AuthProvider = ({ children }) => {
     const validateToken = async () => {
       const storageData = localStorage.getItem("Token");
       if (storageData) {
-        const data = await api.validarToken(storageData);
-        if (data.user) {
-          setUser(data.user);
-          setStatus(true);
-        }
+        // setUser(data.user);
+        setStatus(true);
       }
     };
     validateToken();
   }, [status]);
 
-  const Entrar = async (email, senha) => {
+  const Entrar = async (email,senha) => {
     const data = await api.logar(email, senha);
-    // if (data.user && data.token) {
-    //     setUser(data.user);
-    //     setStatus(true)
-    //     setToken(data.token);
-    //     return true;
-    // }
-    // return false;
+    if (data.acessToken) {
+      // setUser(data.user);
+      setStatus(true)
+      setToken(data.accessToken);
+      return true;
+    }
+    return false;
   };
 
   const cadastrar = async (dados) => {
-    console.log(dados)
+    console.log(dados);
     const data = await api.Cadastrar(dados);
   };
 

@@ -44,7 +44,6 @@ export const ConsultaItem = (props) => {
                         props.consultas.Status == 2 ? "orange" : "red"
                     , color: 'white'
                 }}
-
                 >
                     {
                         props.consultas.Status == 1 ?

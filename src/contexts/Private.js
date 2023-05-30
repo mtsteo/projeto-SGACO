@@ -4,10 +4,10 @@ import {LoginPage} from "../pages/loginPage/LoginPage";
 
 export default function Private({ children }) {
     /* AQUI VERIFICAMOS SE O USUÁRIO ESTÁ LOGADO PARA ENTÃO RENDERIZARMOS O COMPONENT DESEJADO  */
-    const { loggedIn } = useContext(AuthContext);
-    const teste = true
+    const { status } = useContext(AuthContext);
+    console.log(status)
 
-    if (teste) {
+    if (status) {
         return children
     }
     else {
