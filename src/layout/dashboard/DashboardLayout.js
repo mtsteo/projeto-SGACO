@@ -23,7 +23,7 @@ export default function DashboardLayout() {
       >
         <Menu unselectable="">
           <div style={{ margin: "10%" }}>
-            <h2>Olá, {user.pnome} </h2>
+            <h2>Olá, Mateus</h2>
           </div>
           <MenuItem component={<Link to={"/inicio"}></Link>}>Inicio</MenuItem>
           <MenuItem component={<Link to={"/cadastro"}></Link>}>
@@ -40,7 +40,9 @@ export default function DashboardLayout() {
             Relatórios
           </MenuItem>
           <div>
-            <Button color="inherit" sx={{ marginTop: "80%" }}>sair</Button>
+            <Button color="inherit" sx={{ marginTop: "80%" }}>
+              sair
+            </Button>
           </div>
         </Menu>
       </Sidebar>

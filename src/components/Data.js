@@ -1,3 +1,4 @@
+
 export const Data = [
   {
     id: 1,
@@ -30,3 +31,4 @@ export const Data = [
     dataNasc: "03/02/1995",
   },
 ];
+
