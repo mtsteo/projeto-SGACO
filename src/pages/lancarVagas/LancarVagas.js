@@ -3,9 +3,14 @@ import {
   Container,
   Card,
   TextField,
-  CardHeader,
   CardContent,
   CardActions,
+  Checkbox,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
   Button,
   InputLabel,
   MenuItem,
@@ -14,9 +19,11 @@ import {
   Typography,
   Unstable_Grid2 as Grid,
 } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
 import Select from "@mui/material/Select";
 import { useState, useCallback } from "react";
-import { Datavagas } from "../../components/DataVagas";
+import { DataVagas } from "../../components/DataVagas";
+import VagasItem from "../../components/VagasItems";
 
 export default function LancarVagas() {
   const [vaga, setVaga] = useState({
@@ -26,6 +33,8 @@ export default function LancarVagas() {
     vagas: "",
   });
 
+
+  const [Lanc, SetLanc] = useState([]);
   const handleChange = useCallback(
     (event) => {
       const { name, value } = event.target;
@@ -37,6 +46,9 @@ export default function LancarVagas() {
     [vaga]
   );
 
+  console.log(Lanc)
+  const excluir = (id)=>{
+  }
   const vagasnum = [...Array(10).keys()];
   return (
     <>
@@ -47,7 +59,7 @@ export default function LancarVagas() {
         }}
       >
         <Container sx={{ width: "100%" }}>
-          <Stack spacing={3}>
+          <Stack spacing={3}>first
             <div>
               <Typography variant="h4">Lançamento de Vagas</Typography>
             </div>
@@ -66,13 +78,14 @@ export default function LancarVagas() {
                               size="small"
                               fullWidth
                               labelId="demo-simple-select-label"
+                              id="demo-simple-select"
                               value={vaga.especialista}
                               onChange={handleChange}
                               name="especialista"
                             >
-                              {Datavagas.map((espec) => {
+                              {DataVagas.espec.map((espec) => {
                                 return (
-                                  <MenuItem value={espec.id}>
+                                  <MenuItem value={espec.nome.toUpperCase()}>
                                     {espec.nome}
                                   </MenuItem>
                                 );
@@ -105,8 +118,13 @@ export default function LancarVagas() {
                               name="turno"
                               onChange={handleChange}
                             >
-                              <MenuItem value={0}>Manhã</MenuItem>
-                              <MenuItem value={1}>Tarde</MenuItem>
+                              {DataVagas.turnos.map((t) => {
+                                return (
+                                  <MenuItem value={t.turno.toUpperCase()}>
+                                    {t.turno}
+                                  </MenuItem>
+                                );
+                              })}
                             </Select>
                           </Grid>
                           <Grid xs={12} md={4}>
@@ -127,7 +145,11 @@ export default function LancarVagas() {
                           </Grid>
                           <Grid xs={12} md={2}>
                             <CardActions sx={{ justifyContent: "flex-end" }}>
-                              <Button size="small" onClick={() => {}} variant="contained">
+                              <Button
+                                size="small"
+                                onClick={() => SetLanc(() => [...Lanc, vaga])}
+                                variant="contained"
+                              >
                                 Adicionar lançamento
                               </Button>
                             </CardActions>
@@ -140,7 +162,38 @@ export default function LancarVagas() {
                 </Grid>
                 <Grid xs={12} md={8} lg={16}>
                   <Typography variant="h4">Lançamentos</Typography>
-                  <h2>teste</h2>
+                  <Card>
+                    <Box sx={{ minWidth: 800 }}>
+                      <Table>
+                        <TableHead>
+                          <TableRow>
+                            <TableCell padding="checkbox">
+                              <Checkbox />
+                            </TableCell>
+                            <TableCell sx={{ fontWeight: 700 }}>
+                              MEDICO/ESPECIALISTA
+                            </TableCell>
+                            <TableCell sx={{ fontWeight: 700 }}>DATA</TableCell>
+                            <TableCell sx={{ fontWeight: 700 }}>
+                              TURNO
+                            </TableCell>
+                            <TableCell sx={{ fontWeight: 700 }}>
+                              N. DE VAGAS
+                            </TableCell>
+                            <TableCell sx={{ fontWeight: 700 }}>
+                              OPÇÕES
+                              <EditIcon />
+                            </TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {Lanc.map((vaga) => {
+                            return <VagasItem  del ={excluir} key={vaga} Vagas={vaga} />;
+                          })}
+                        </TableBody>
+                      </Table>
+                    </Box>
+                  </Card>
                 </Grid>
               </Grid>
             </div>

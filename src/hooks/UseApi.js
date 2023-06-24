@@ -1,5 +1,4 @@
 import axios from "axios";
-import { da } from "date-fns/locale";
 
 const api = axios.create({
   baseURL: "https://b896-168-197-154-209.ngrok-free.app",
@@ -11,8 +10,6 @@ const api = axios.create({
     "Acess-Control-Allow_Header":"Origin, X-Requested-With, Content-Type, Accept, Authorization"
   },
 });
-
-
 
 export const UseApi = () => ({
   validarToken: async (token) => {  
