@@ -18,9 +18,7 @@ import {
 
 export default function VagasItems(props) {
     const [isOpen, setIsOpen] = useState(false)
-    console.log(props.del)
-    console.log(props.Vagas)
-
+   
     return (
         <TableRow hover key="1">
             <TableCell padding="checkbox">
@@ -44,7 +42,7 @@ export default function VagasItems(props) {
                     data={props}
                 /> */}
                 <Button
-                    onClick={() => props.del(props.id)}
+                    onClick={() => props.del(props.index)}
                     endIcon={<DeleteForeverIcon fontSize="large" />}
                 >
                     {" "}

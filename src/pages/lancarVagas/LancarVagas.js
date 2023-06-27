@@ -33,7 +33,6 @@ export default function LancarVagas() {
     vagas: "",
   });
 
-
   const [Lanc, SetLanc] = useState([]);
   const handleChange = useCallback(
     (event) => {
@@ -46,9 +45,12 @@ export default function LancarVagas() {
     [vaga]
   );
 
-  console.log(Lanc)
-  const excluir = (id)=>{
+  const excluir = (index)=>{
+      const vagas = Lanc.slice()
+      vagas.splice(index,1)
+      SetLanc(vagas)
   }
+
   const vagasnum = [...Array(10).keys()];
   return (
     <>
@@ -59,7 +61,8 @@ export default function LancarVagas() {
         }}
       >
         <Container sx={{ width: "100%" }}>
-          <Stack spacing={3}>first
+          <Stack spacing={3}>
+            first
             <div>
               <Typography variant="h4">Lançamento de Vagas</Typography>
             </div>
@@ -187,8 +190,10 @@ export default function LancarVagas() {
                           </TableRow>
                         </TableHead>
                         <TableBody>
-                          {Lanc.map((vaga) => {
-                            return <VagasItem  del ={excluir} key={vaga} Vagas={vaga} />;
+                          {Lanc.map((vaga, index) => {
+                            return (
+                              <VagasItem index={index} del={excluir} Vagas={vaga} />
+                            );
                           })}
                         </TableBody>
                       </Table>
