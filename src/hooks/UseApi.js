@@ -23,6 +23,18 @@ export const UseApi = () => ({
     const response = await api.post("/login", {"email":email, "senha":senha});
     return response.data;
   },
+  getUsers: async () => {
+    const response = await api.get("/getusers",);
+    return response.data;
+  },
+  deleteUsers: async (cpf) => {
+    const response = await api.post("/deleteuser",{"CPF":cpf});
+    return response.data;
+  },
+  putUsers: async (dados) => {
+    const response = await api.post("/putusers",{dados});
+    return response.data;
+  },
   Cadastrar: async (dados) => {
     // const response = await api.post('/cadastrar',{dados});
   },
