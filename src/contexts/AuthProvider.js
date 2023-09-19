@@ -6,18 +6,19 @@ export const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [status, setStatus] = useState(false);
+  const [allUsers, setAllUsers] = useState([]);
   const api = UseApi();
 
   useEffect(() => {
-    const validateToken = async () => {
-      const storageData = localStorage.getItem("Token");
-      if (storageData) {
-        // setUser(data.user);
-        setStatus(true);
-      }
-    };
-    validateToken();
-  }, [status]);
+    // const validateToken = async () => {
+    //   const storageData = localStorage.getItem("Token");
+    //   if (storageData) {
+    //     // setUser(data.user);
+    //     setStatus(true);
+    //   }
+    // };
+    // validateToken();
+  }, []);
 
   const Entrar = async (email, senha) => {
     const data = await api.logar(email, senha);
@@ -32,8 +33,24 @@ export const AuthProvider = ({ children }) => {
   };
 
   const cadastrar = async (dados) => {
-    console.log(dados);
     const data = await api.Cadastrar(dados);
+  };
+
+  const deletarUser = async (cpf) => {
+    const data = await api.deleteUsers(cpf);
+  };
+
+  const atualizaUser = async (cpf) => {
+    // const data =  await api.
+  };
+
+  const getusers = async () => {
+    const data = await api.getUsers();
+    return data;
+  };
+
+  const updateUser = async (dados) => {
+    await api.putUsers(dados);
   };
 
   const Sair = async () => {
@@ -49,7 +66,16 @@ export const AuthProvider = ({ children }) => {
   };
   return (
     <AuthContext.Provider
-      value={{ user, Entrar, cadastrar, Sair, status, user }}
+      value={{
+        user,
+        Entrar,
+        cadastrar,
+        Sair,
+        getusers,
+        updateUser,
+        status,
+        user,
+      }}
     >
       {children}
     </AuthContext.Provider>

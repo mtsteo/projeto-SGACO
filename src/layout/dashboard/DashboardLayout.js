@@ -7,7 +7,6 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 export default function DashboardLayout() {
   const { user } = React.useContext(AuthContext);
-  console.log(user);
 
   return (
     <div style={{ display: "flex" }}>

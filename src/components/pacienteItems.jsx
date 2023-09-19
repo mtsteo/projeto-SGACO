@@ -31,13 +31,13 @@ export default function PacienteItem(props) {
             <TableCell>
                 <Stack alignItems="center" direction="row" spacing={2}>
                     <Typography variant="subtitle2">
-                        {props.paciente.nome}
+                        {props.paciente.pNome + ' ' + props.paciente.sNome}
                     </Typography>
                 </Stack>
             </TableCell>
-            <TableCell>{props.paciente.cpf}</TableCell>
-            <TableCell>{props.paciente.dataNasc}</TableCell>
-            <TableCell>{props.paciente.dataNasc}</TableCell>
+            <TableCell>{props.paciente.CPF}</TableCell>
+            <TableCell>{props.paciente.dataNascimento}</TableCell>
+            <TableCell>{props.paciente.Email}</TableCell>
 
             <TableCell>
                 <ModalFicha

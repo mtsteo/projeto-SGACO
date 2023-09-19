@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://b896-168-197-154-209.ngrok-free.app",
+  baseURL: "https://0d0a-168-197-154-164.ngrok-free.app",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
     "Acess-Control-Allow_Header":"Origin, X-Requested-With, Content-Type, Accept, Authorization"
   },
 });
@@ -24,7 +24,7 @@ export const UseApi = () => ({
     return response.data;
   },
   getUsers: async () => {
-    const response = await api.get("/getusers",);
+    const response = await api.post("/getusers",);
     return response.data;
   },
   deleteUsers: async (cpf) => {
@@ -32,6 +32,7 @@ export const UseApi = () => ({
     return response.data;
   },
   putUsers: async (dados) => {
+    console.log(dados)
     const response = await api.post("/putusers",{dados});
     return response.data;
   },
@@ -44,4 +45,5 @@ export const UseApi = () => ({
     return response.data;
   },
 });
+
 
