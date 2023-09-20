@@ -1,4 +1,4 @@
-import { useState, useCallback, Image } from "react";
+import { useState, useCallback, Image, useEffect } from "react";
 import {
   Box,
   Container,
@@ -39,10 +39,14 @@ export default function ModalFicha(props) {
     DataNasc: props.data.paciente.dataNasc,
   });
 
-  const {updateUser} = useContext(AuthContext);
+  const { updateUser, deletarUser } = useContext(AuthContext);
 
-  const update = async ()=>{
-    await updateUser(values)
+  const update = async () => {
+    await updateUser(values);
+  };
+
+  const deleteU = async()=>{
+    await deletarUser(values.cpf)
   }
 
   const [isEdit, setIsEdit] = useState(true);
@@ -56,14 +60,16 @@ export default function ModalFicha(props) {
     },
     [values]
   );
-
-
+  function reload() {
+    window.location.reload();
+  }
 
   return (
     <div>
       <Modal
         open={props.isOpen}
         onClose={props.isClose}
+        onBackdropClick={reload}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -174,11 +180,21 @@ export default function ModalFicha(props) {
                         <Divider />
                         <CardActions sx={{ justifyContent: "flex-end" }}>
                           {!isEdit ? (
-                            <Button variant="contained" onClick={update}>
-                              {" "}
-                              Salvar Alterações
-                            </Button>
+                            <div>
+                              <Button variant="contained" onClick={update}>
+                                {" "}
+                                Salvar Alterações
+                              </Button>
+                              <Button
+                                onClick={() => deleteU()}
+                                variant="contained"
+                                color="warning"
+                              >
+                                Deletar
+                              </Button>
+                            </div>
                           ) : null}
+
                           <Button
                             onClick={() => setIsEdit(false)}
                             variant="contained"

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://0d0a-168-197-154-164.ngrok-free.app",
+  baseURL: "https://f871-168-197-154-160.ngrok-free.app",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -28,6 +28,7 @@ export const UseApi = () => ({
     return response.data;
   },
   deleteUsers: async (cpf) => {
+    console.log(cpf)
     const response = await api.post("/deleteuser",{"CPF":cpf});
     return response.data;
   },

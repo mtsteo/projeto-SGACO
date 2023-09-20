@@ -73,6 +73,7 @@ export const AuthProvider = ({ children }) => {
         Sair,
         getusers,
         updateUser,
+        deletarUser,
         status,
         user,
       }}
