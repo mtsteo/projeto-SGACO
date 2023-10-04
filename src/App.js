@@ -14,7 +14,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Private><DashboardLayout /></Private>}>
-          <Route path="/inicio" exate element={<Home />} />
+          <Route path="/inicio"  element={<Home/>}/>
           <Route path="/cadastro" exate element={<Cadastro />} />
           <Route path="/consultasAgendadas" exate element={<ConsultasAgendadas />} />
           <Route path="/lancarVagas" exate element={<LancarVagas />} />
