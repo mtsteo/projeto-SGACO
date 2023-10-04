@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://b06a-168-197-155-151.ngrok-free.app",
+  baseURL: "https://8ef4-168-197-155-146.ngrok-free.app",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
