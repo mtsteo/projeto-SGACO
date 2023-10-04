@@ -64,7 +64,6 @@ export default function DashboardLayout() {
       </Sidebar>
       <Box sx={{ marginLeft: "250px" }}>
         <Outlet />
-        <Home/>
       </Box>
     </div>
   );
